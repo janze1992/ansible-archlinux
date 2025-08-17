@@ -7,4 +7,4 @@
   ansible.builtin.service: name=chrony state=restarted
 
 - name: enable chrony
-  ansible.builtin.serice: name=chrony state=started enabled=true
+  ansible.builtin.service: name=chrony state=started enabled=true

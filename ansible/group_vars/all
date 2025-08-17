@@ -41,7 +41,7 @@ bootloader: grub
 # ==================
 # The device name of your luks device
 ##
-cryptdevice: /dev/nvmen1p2
+cryptdevice: /dev/sda2
 
 ##
 # Connectivity configuration

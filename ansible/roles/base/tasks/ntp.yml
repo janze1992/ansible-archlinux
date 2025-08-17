@@ -12,9 +12,9 @@
     - rkhunter propupdate
     - enable chrony
 
-- name: Configure chrony
-  ansible.builtin.copy: 
-  src: chrony.conf
-  dest: /etc/chrony.conf
-  notify:
-    - restart chrony
+#- name: Configure chrony
+#  ansible.builtin.copy: 
+#  src: chrony.conf.j2
+#  dest: /etc/chrony.conf
+#  notify:
+#    - restart chrony

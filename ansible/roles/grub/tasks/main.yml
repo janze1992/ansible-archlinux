@@ -9,9 +9,9 @@
 
 - name: Set uuid fact
   ansible.builtin.set_fact:
-    crypt_uuid: "{{ blkid_output.stdout }}"
+    crypt_uuid: "{{ blkid_output }}"
 
-- name: Push grub confi template
+- name: Push grub config template
   ansible.builtin.template:
     src: grub.j2
     dest: /etc/default/grub

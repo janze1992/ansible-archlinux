@@ -8,9 +8,15 @@ HoldPkg		= pacman glibc
 Architecture 	= auto
 
 # Misc options
+#UseSyslog
 Color
+#NoProgressBar
 CheckSpace
+VerbosePkgLists
+ParallelDownloads = 5
 ILoveCandy
+DownloadUser = alpm
+#DisableSandbox
 SigLevel	  = Required DatabaseOptional
 LocalFileSigLevel = Optional
 
