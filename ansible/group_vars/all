@@ -5,9 +5,9 @@
 # ==================
 ##
 user:
-    name: aaron
+    name: jan
     group: users
-    shell: /bin/zsh
+    shell: /bin/fish
 
 ##
 # System configuration
@@ -21,10 +21,10 @@ user:
 #   Option: "nvidia" will install nvidia drivers and tools
 ##
 system:
-    locale: de_CH.UTF-8
-    timezone: Europe/Zurich
-    processor: amd
-    graphics_card: nvidia
+    locale: en_US.UTF-8
+    timezone: Europe/Berlin
+    processor: intel
+    graphics_card: intel
     macspoof: disabled
 
 ##
@@ -49,7 +49,7 @@ cryptdevice: /dev/nvmen1p2
 ##
 ssh:
     port: 22
-    enable_sshd: true
+    enable_sshd: false
 
 ##
 # Dotfile configuration
@@ -59,8 +59,8 @@ ssh:
 ##
 dotfiles:
     installation: true
-    url: https://github.com/id101010/dotfiles.git
-    destination: "/home/{{ user.name }}/.config/dotfiles"
+    url: https://github.com/janze1992/dotfiles.git
+    destination: "/home/{{ user.name }}/dotfiles"
 
 ##
 # Base package configuration
@@ -73,7 +73,7 @@ base_packages:
     - openssh
     - rkhunter
     - pacman-contrib
-    - zsh
+    - fish
     - htop
     - curl
     - tmux

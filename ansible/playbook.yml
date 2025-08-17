@@ -6,19 +6,19 @@
   become: true
 
   roles:
-    - { role: network, tags: ['network'] }
-    - { role: kernel, tags: ['kernel'] }
+#    - { role: network, tags: ['network'] }
+#    - { role: kernel, tags: ['kernel'] }
     - { role: base, tags: ['base'] }
-    - { role: firewall, tags: ['firewall'] }
-    - { role: grub, tags: ['grub'], when: "bootloader == 'grub'"}
-    - { role: syslinux, tags: ['syslinux'], when: "bootloader == 'syslinux'"}
-    - { role: dotfiles, tags: ['dotfiles'] }
-    - { role: shell, tags: ['shell'] }
-    - { role: editor, tags: ['editor'] }
+#    - { role: firewall, tags: ['firewall'] }
+#    - { role: grub, tags: ['grub'], when: "bootloader == 'grub'"}
+#    - { role: syslinux, tags: ['syslinux'], when: "bootloader == 'syslinux'"}
+#    - { role: dotfiles, tags: ['dotfiles'] }
+#    - { role: shell, tags: ['shell'] }
+#    - { role: editor, tags: ['editor'] }
     - { role: terminal, tags: ['terminal'] }
-    - { role: windowmanager, tags: ['windowmanager'] }
+#    - { role: windowmanager, tags: ['windowmanager'] }
     - { role: browsers, tags: ['browsers'] }
-    - { role: redshift, tags: ['redshift'] }
-    - { role: keepass, tags: ['keepass'] }
-    - { role: macspoof, tags: ['macspoof'], when: "system.macspoof == 'enabled'"}
-    - { role: sound, tags: ['sound'] }
+#    - { role: redshift, tags: ['redshift'] }
+#    - { role: keepass, tags: ['keepass'] }
+#    - { role: macspoof, tags: ['macspoof'], when: "system.macspoof == 'enabled'"}
+#    - { role: sound, tags: ['sound'] }
