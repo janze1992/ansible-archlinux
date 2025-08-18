@@ -76,8 +76,8 @@ base_packages:
     - fish
     - htop
     - curl
-    - tmux
     - git
     - rsync
     - coreutils
     - dateutils
+    - pass

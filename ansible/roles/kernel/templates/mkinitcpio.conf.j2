@@ -7,6 +7,7 @@ MODULES=({{ initrd_mods }} i915)
 {% elif system.graphics_card == 'amd' %} 
 MODULES=({{ initrd_mods }} amdgpu)
 {% endif %}
+MODULES=({{ initrd_mods }})
 
 # BINARIES
 BINARIES=({{ initrd_bin }})

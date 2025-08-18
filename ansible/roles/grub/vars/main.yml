@@ -3,12 +3,12 @@ menu:
 
 kline:
   root: root=/dev/mapper/cryptroot
-  resume: 
+  resume:   
   #  resume: resume=/dev/mapper/cryptroot
   default: loglevel=3 quiet acpi_osi=Linux splash
 
 kernel_line_default: "{{ kline.default }}"
-kernel_line: "cryptdevice=UUID={{crypt_uuid}}:cryptroot {{ kline.root }} {{ kline.resume }}"
+kernel_line: "cryptdevice=UUID={{crypt_uuid}}:cryptroot {{ kline.root }}"
 
 splash:
   path: /boot

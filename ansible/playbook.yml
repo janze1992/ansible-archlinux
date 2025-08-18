@@ -6,7 +6,7 @@
   become: true
 
   roles:
-#    - { role: network, tags: ['network'] }
+    - { role: network, tags: ['network'] }
     - { role: kernel, tags: ['kernel'] }
     - { role: base, tags: ['base'] }
 #    - { role: firewall, tags: ['firewall'] }
@@ -16,9 +16,9 @@
 #    - { role: shell, tags: ['shell'] }
 #    - { role: editor, tags: ['editor'] }
     - { role: terminal, tags: ['terminal'] }
-#    - { role: windowmanager, tags: ['windowmanager'] }
+    - { role: windowmanager, tags: ['windowmanager'] }
     - { role: browsers, tags: ['browsers'] }
-#    - { role: redshift, tags: ['redshift'] }
+    - { role: redshift, tags: ['redshift'] }
 #    - { role: keepass, tags: ['keepass'] }
-#    - { role: macspoof, tags: ['macspoof'], when: "system.macspoof == 'enabled'"}
-#    - { role: sound, tags: ['sound'] }
+    - { role: macspoof, tags: ['macspoof'], when: "system.macspoof == 'enabled'"}
+    - { role: sound, tags: ['sound'] }

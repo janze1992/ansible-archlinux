@@ -3,9 +3,9 @@
 - name: Pacman mirrorlist setup
   ansible.builtin.template:
     src: mirrorlist.j2
-    dest: /etc/pacman.d/
+    dest: /etc/pacman.d/mirrorlist
     mode: 0644
-    user: root
+    owner: root
     group: root
 
 - name: Pacman config setup
@@ -44,7 +44,7 @@
     - rkhunter propupdate
 
 #- name: Install paru as aur helper
-#  aur:
+#  kewlfft.aur.aur:
 #    name: paru
 #    user: "{{ user.name }}"
 #    skip_pgp: true
