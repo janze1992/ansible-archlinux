@@ -1,3 +1,5 @@
+---
+
 - name: Install lightdm and components
   community.general.pacman:
     name:

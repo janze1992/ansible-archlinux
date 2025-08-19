@@ -10,6 +10,7 @@
   until: task_result is success
   retries: 10
   delay: 2
+  notify: 
     - reload iptables
     - reload ip6tables
 

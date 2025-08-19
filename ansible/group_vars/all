@@ -25,7 +25,7 @@ system:
     timezone: Europe/Berlin
     processor: intel
     graphics_card: intel
-    macspoof: enabled
+    macspoof: disable
 
 ##
 # Bootloader configuration
@@ -49,7 +49,7 @@ cryptdevice: /dev/sda2
 ##
 ssh:
     port: 22
-    enable_sshd: false
+    enable_sshd: true
 
 ##
 # Dotfile configuration
@@ -83,3 +83,5 @@ base_packages:
     - pass
     - vim
     - neovim 
+    - tlp
+    - stow

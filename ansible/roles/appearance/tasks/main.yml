@@ -1,0 +1,4 @@
+---
+
+- name: install pywall
+  ansible.builtin.import_tasks: pywall.yml
