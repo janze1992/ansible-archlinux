@@ -1,0 +1,36 @@
+---
+
+- name: Install pywall and components
+  community.general.pacman:
+    name:
+     - python-pywal
+     - python-pywalfox
+
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: Clone wallpapers
+  ansible.builtin.git:
+    repo: "https://github.com/janze1992/wallpapers.git"
+    dest: "/home/{{ user.name }}/Pictures/wallpapers/"
+    accept_hostkey: true
+    update: true
+    force: true
+  become: true
+  become_user: "{{ user.name }}"
+
+- name: Set Desktop appearance & wallpaper
+  ansible.builtin.command: "wal -i /home/{{ user.name }}/Pictures/wallpapers/S7eYCgt.png"
+  become: true
+  become_user: "{{ user.name }}"
+
+- name: Copy file 
+  ansible.builtin.copy:
+    src: /home/{{ user.name }}/.cache/wal/wal
+    dest: /usr/share/wallpapers/wal
+    owner: root
+    group: root
+    mode: '0644'
