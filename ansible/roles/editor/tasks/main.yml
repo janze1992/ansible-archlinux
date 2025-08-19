@@ -1,4 +1,0 @@
----
-
-- name: import editor tasks
-  ansible.builtin.import_tasks: editor.yml

@@ -10,9 +10,10 @@
   become: true
   become_user: "{{ user.name }}"
 
-- name: Install user dotfiles
-  ansible.builtin.command: "./install_dotfiles.sh"
-  args:
-    chdir: "{{ dotfiles.destination }}"
-  become: true
-  become_user: "{{ user.name }}"
+#- name: Install user dotfiles
+#  ansible.builtin.command: "./install_dotfiles.sh"
+#  args:
+#    chdir: "{{ dotfiles.destination }}"
+#  become: true
+#  become_user: "{{ user.name }}"
+#  

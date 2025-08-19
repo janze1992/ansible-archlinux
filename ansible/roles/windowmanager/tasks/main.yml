@@ -8,3 +8,6 @@
 
 - name: install i3 window manager
   ansible.builtin.import_tasks: i3.yml
+
+- name: install lightdm
+  ansible.builtin.import_tasks: lightdm.yml

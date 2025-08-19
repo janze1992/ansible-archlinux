@@ -25,7 +25,7 @@ system:
     timezone: Europe/Berlin
     processor: intel
     graphics_card: intel
-    macspoof: disabled
+    macspoof: enabled
 
 ##
 # Bootloader configuration
@@ -81,3 +81,5 @@ base_packages:
     - coreutils
     - dateutils
     - pass
+    - vim
+    - neovim 
