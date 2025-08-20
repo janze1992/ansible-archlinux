@@ -27,10 +27,10 @@
   become: true
   become_user: "{{ user.name }}"
 
-- name: Copy file 
-  ansible.builtin.copy:
-    src: /home/{{ user.name }}/.cache/wal/wal
-    dest: /usr/share/wallpapers/wal
-    owner: root
-    group: root
-    mode: '0644'
+#- name: Copy file 
+#  ansible.builtin.copy:
+#    src: /home/{{ user.name }}/.cache/wal/wal
+#    dest: /usr/share/wallpapers/wal
+#    owner: root
+#    group: root
+#    mode: '0644'

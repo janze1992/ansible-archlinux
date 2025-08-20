@@ -21,3 +21,4 @@
     - { role: sound, tags: ['sound'] }
     - { role: office, tags: ['office'] } 
     - { role: appearance, tags: ['appearance'] }
+    - { role: monitor, tags: ['monitor'] }
