@@ -1,0 +1,15 @@
+---
+
+- name: Install network tools
+  ansible.builtin.package:
+    name:
+     - htop
+     - btop
+     - powertop
+     - kmon
+     - bmon
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
