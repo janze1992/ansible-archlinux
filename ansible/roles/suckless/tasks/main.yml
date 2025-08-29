@@ -1,0 +1,9 @@
+---
+
+- name: install suckless dwm
+  ansible.builtin.import_tasks: dwm.yml
+  when: dwm.installation
+	
+- name: install suckless simple terminal
+  ansible.builtin.import_tasks: st.yml
+  when: st.installation

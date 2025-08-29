@@ -26,6 +26,15 @@ system:
     processor: intel
     graphics_card: intel
     macspoof: disable
+		
+##		
+# Windowmanager configuration
+# ===========================
+# dwm or i3 are supported
+# * use suckless for dwm
+# * use i3 for i3-gaps
+windowmanager: suckless
+
 
 ##
 # Bootloader configuration

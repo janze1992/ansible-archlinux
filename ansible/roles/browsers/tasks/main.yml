@@ -9,3 +9,5 @@
   community.general.pacman: name=firefox state=present
   tags:
     - firefox
+
+		
