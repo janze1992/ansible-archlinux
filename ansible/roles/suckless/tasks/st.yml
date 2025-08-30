@@ -1,0 +1,11 @@
+---
+
+- name: Clone st files
+  ansible.builtin.git:
+    repo: "{{ st.url }}"
+    dest: "{{ st.destination }}"
+    accept_hostkey: true
+    update: true
+    force: true
+  become: true
+  become_user: "{{ user.name }}"

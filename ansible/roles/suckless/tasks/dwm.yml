@@ -1,0 +1,11 @@
+---
+
+- name: Clone dwm files
+  ansible.builtin.git:
+    repo: "{{ dwm.url }}"
+    dest: "{{ dwm.destination }}"
+    accept_hostkey: true
+    update: true
+    force: true
+  become: true
+  become_user: "{{ user.name }}"

@@ -71,6 +71,25 @@ dotfiles:
     url: https://github.com/janze1992/dotfiles.git
     destination: "/home/{{ user.name }}/dotfiles"
 
+		
+##
+# st configuration
+# ================
+# 
+#
+st:
+		url: https://github.com/janze1992/dwm.git
+		destination: "/home/{{ user.name }}/suckless/st"
+
+##
+# dwm configuration
+# ================
+# 
+#
+dwm:
+		url: https://github.com/janze1992/st.git
+		destination: "/home/{{ user.name }}/suckless/dwm"
+
 ##
 # Base package configuration
 # ==========================
