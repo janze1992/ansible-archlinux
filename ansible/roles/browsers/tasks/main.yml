@@ -9,5 +9,15 @@
   community.general.pacman: name=firefox state=present
   tags:
     - firefox
-
+		
+- name: Install qutebrowser
+  aur:
+    name:
+      - qutebrowser-git
+    user: "{{ user.name }}"
+    skip_pgp: true
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2   
 		
