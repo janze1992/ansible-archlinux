@@ -9,3 +9,41 @@
     force: true
   become: true
   become_user: "{{ user.name }}"
+  
+  - name: Clone dmenu
+  ansible.builtin.git:
+    repo: "{{ dmenu.url }}"
+    dest: "{{ dmenu.destination }}"
+    accept_hostkey: true
+    update: true
+    force: true
+  become: true
+  become_user: "{{ user.name }}"
+  
+  - name: Clone dwmblocks
+  ansible.builtin.git:
+    repo: "{{ dwmblocks.url }}"
+    dest: "{{ dwmblocks.destination }}"
+    accept_hostkey: true
+    update: true
+    force: true
+  become: true
+  become_user: "{{ user.name }}"
+  
+  
+  - name: Install suckless components
+  community.general.pacman:
+    name:
+      - xorg
+      - xorg-xinit
+	  - arandr
+	  - libnotify
+	  - dunst
+	  - unclutter
+	  - xclip
+	  - slock  
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
