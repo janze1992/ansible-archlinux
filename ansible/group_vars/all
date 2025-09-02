@@ -26,8 +26,8 @@ system:
     processor: intel
     graphics_card: intel
     macspoof: disable
-		
-##		
+
+##
 # Windowmanager configuration
 # ===========================
 # dwm or i3 are supported
@@ -71,15 +71,15 @@ dotfiles:
     url: https://github.com/janze1992/dotfiles.git
     destination: "/home/{{ user.name }}/dotfiles"
 
-		
+
 ##
 # st configuration
 # ================
 # 
 #
 st:
-		url: https://github.com/janze1992/dwm.git
-		destination: "/home/{{ user.name }}/suckless/st"
+    url: https://github.com/janze1992/dwm.git
+    destination: "/home/{{ user.name }}/suckless/st"
 
 ##
 # dwm configuration
@@ -87,26 +87,26 @@ st:
 # 
 #
 dwm:
-		url: https://github.com/janze1992/dwm.git
-		destination: "/home/{{ user.name }}/suckless/dwm"
-		
+    url: https://github.com/janze1992/dwm.git
+    destination: "/home/{{ user.name }}/suckless/dwm"
+    
 ##
 # dwmblocks configuration
 # ================
 # 
 #
 dwmblocks:
-		url: https://github.com/janze1992/dwmblocks.git
-		destination: "/home/{{ user.name }}/suckless/dwmblocks"
-		
+    url: https://github.com/janze1992/dwmblocks.git
+    destination: "/home/{{ user.name }}/suckless/dwmblocks"
+    
 ##
 # demu configuration
 # ================
 # 
 #
 demu:
-		url: https://github.com/janze1992/dmenu.git
-		destination: "/home/{{ user.name }}/suckless/dmenu"
+    url: https://github.com/janze1992/dmenu.git
+    destination: "/home/{{ user.name }}/suckless/dmenu"
 
 ##
 # Base package configuration

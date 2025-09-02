@@ -10,13 +10,12 @@
     - { role: kernel, tags: ['kernel'] }
     - { role: base, tags: ['base'] }
     - { role: firewall, tags: ['firewall'] }
-    - { role: grub, tags: ['grub']
+    - { role: grub, tags: ['grub'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: terminal, tags: ['terminal'] }
-    - { role: i3, tags: ['i3'] }, when: "windowmanager == 'i3'"}
-    - { role: suckless, tags: ['suckless'] }, when: "windowmanager == 'suckless'"}	
-    - { role: browsers, tags:
-			['browsers'] }
+    - { role: i3, tags: ['i3'], when: "windowmanager == 'i3'"}
+    - { role: suckless, tags: ['suckless'], when: "windowmanager == 'suckless'"}	
+    - { role: browsers, tags: ['browsers'] }
     - { role: redshift, tags: ['redshift'] }
     - { role: keepass, tags: ['keepass'] }
     - { role: macspoof, tags: ['macspoof'], when: "system.macspoof == 'enabled'"}

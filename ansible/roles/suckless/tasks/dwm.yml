@@ -1,5 +1,23 @@
 ---
 
+- name: Install suckless components
+  community.general.pacman:
+    name:
+      - xorg
+      - xorg-xinit
+      - arandr
+      - libnotify
+      - dunst
+      - unclutter
+      - xclip
+      - slock  
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay:  2
+
+
 - name: Clone dwm files
   ansible.builtin.git:
     repo: "{{ dwm.url }}"
@@ -8,7 +26,7 @@
     update: true
     force: true
   become: true
-  become_user: "{{ user.name }}"
+  become_user: "{{ user.name }}"ü
   
   - name: Clone dmenu
   ansible.builtin.git:
@@ -31,19 +49,3 @@
   become_user: "{{ user.name }}"
   
   
-  - name: Install suckless components
-  community.general.pacman:
-    name:
-      - xorg
-      - xorg-xinit
-	  - arandr
-	  - libnotify
-	  - dunst
-	  - unclutter
-	  - xclip
-	  - slock  
-    state: present
-  register: task_result
-  until: task_result is success
-  retries: 10
-  delay: 2

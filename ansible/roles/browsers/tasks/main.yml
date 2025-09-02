@@ -9,7 +9,7 @@
   community.general.pacman: name=firefox state=present
   tags:
     - firefox
-		
+    
 - name: Install qutebrowser
   aur:
     name:
@@ -19,5 +19,4 @@
   register: task_result
   until: task_result is success
   retries: 10
-  delay: 2   
-		
+  delay: 2
