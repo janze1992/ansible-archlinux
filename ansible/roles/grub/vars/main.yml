@@ -2,13 +2,13 @@ menu:
   distribution: Arch
 
 kline:
-  root: root=/dev/mapper/cryptroot
+  root: root=/dev/mapper/root
   resume:   
   #  resume: resume=/dev/mapper/cryptroot
   default: loglevel=3 quiet acpi_osi=Linux splash
 
 kernel_line_default: "{{ kline.default }}"
-kernel_line: "cryptdevice=UUID={{crypt_uuid}}:cryptroot {{ kline.root }}"
+kernel_line: "cryptdevice=UUID={{crypt_uuid}}:root zswap.enables=0 rootfstype=btrfs"
 
 splash:
   path: /boot
