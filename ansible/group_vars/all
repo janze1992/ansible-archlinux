@@ -7,7 +7,7 @@
 user:
     name: jan
     group: users
-    shell: /bin/fish
+    shell: /bin/zsh
 
 ##
 # System configuration

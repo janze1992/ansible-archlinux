@@ -1,0 +1,4 @@
+---
+
+- name: install and configure zsh
+  ansible.builtin.import_tasks: zsh.yml
