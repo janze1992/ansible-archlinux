@@ -78,7 +78,7 @@ dotfiles:
 # 
 #
 st:
-    url: https://github.com/janze1992/dwm.git
+    url: https://github.com/janze1992/st.git
     destination: "/home/{{ user.name }}/suckless/st"
 
 ##
