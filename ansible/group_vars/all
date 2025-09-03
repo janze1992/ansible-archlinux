@@ -104,7 +104,7 @@ dwmblocks:
 # ================
 # 
 #
-demu:
+dmenu:
     url: https://github.com/janze1992/dmenu.git
     destination: "/home/{{ user.name }}/suckless/dmenu"
 

@@ -10,10 +10,3 @@
   become: true
   become_user: "{{ user.name }}"
   
-  
-- name: install st
-  ansible.builtin.command: "make install"
-  become: true
-  become_user: "{{ user.name }}"
-  args:
-    chdir: "{{ st.destination }}"

@@ -3,14 +3,22 @@
 - name: Install suckless components
   community.general.pacman:
     name:
-      - xorg
+      - xorg-server
+      - xorg-xwininfo
       - xorg-xinit
+      - xorg-xset
+      - xorg-xprop
+      - xorg-xbacklight
       - arandr
       - libnotify
       - dunst
       - unclutter
       - xclip
-      - slock  
+      - slock
+      - noto-fonts
+      - noto-fonts-emoji 
+      - xdotool
+      - python-qdarkstyle
     state: present
   register: task_result
   until: task_result is success
@@ -28,14 +36,8 @@
   become: true
   become_user: "{{ user.name }}"
   
-- name: install dwm
-  ansible.builtin.command: "make clean install"
-  become: true
-  become_user: "{{ user.name }}"
-  args:
-    chdir: "{{ dwm.destination }}"
   
-  - name: Clone dmenu
+- name: Clone dmenu
   ansible.builtin.git:
     repo: "{{ dmenu.url }}"
     dest: "{{ dmenu.destination }}"
@@ -45,12 +47,6 @@
   become: true
   become_user: "{{ user.name }}"
   
-- name: install demu
-  ansible.builtin.command: "make install"
-  become: true
-  become_user: "{{ user.name }}"
-  args:
-    chdir: "{{ dmenu.destination }}"
 
 - name: Clone dwmblocks
   ansible.builtin.git:
@@ -61,11 +57,4 @@
     force: true
   become: true
   become_user: "{{ user.name }}"
-  
-- name: install dwmblocks
-  ansible.builtin.command: "make install"
-  become: true
-  become_user: "{{ user.name }}"
-  args:
-    chdir: "{{ dwmblocks.destination }}"
   
