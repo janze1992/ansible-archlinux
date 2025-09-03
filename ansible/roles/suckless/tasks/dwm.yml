@@ -1,6 +1,6 @@
 ---
 
-- name: Install suckless components
+- name: Install suckless and components
   community.general.pacman:
     name:
       - xorg-server
@@ -15,8 +15,6 @@
       - unclutter
       - xclip
       - slock
-      - noto-fonts
-      - noto-fonts-emoji 
       - xdotool
       - python-qdarkstyle
     state: present

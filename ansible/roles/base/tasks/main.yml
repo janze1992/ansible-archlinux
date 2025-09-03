@@ -11,3 +11,6 @@
 
 - name: import locale tasks
   ansible.builtin.import_tasks: locale.yml
+
+- name: import fonts tasks
+  ansible.builtin.import_tasks: fonts.yml

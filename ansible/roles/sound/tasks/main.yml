@@ -7,6 +7,9 @@
       - pulseaudio
       - pulseaudio-alsa
       - pavucontrol
+      - pipewire-pulse
+      - wireplumber
+      - pulsemixer
     state: present
   register: task_result
   until: task_result is success
@@ -25,3 +28,19 @@
     dest: "/home/{{ user.name }}/.config/pulse/daemon.conf"
   become_user: "{{ user.name }}"
   become: true
+
+
+- name: Install Audio and Music tools
+  community.general.pacman:
+    name:
+      - ffmpeg
+      - ffmpegthumbnailer
+      - mpd
+      - mpc
+      - mpv
+      - mediainfo
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2

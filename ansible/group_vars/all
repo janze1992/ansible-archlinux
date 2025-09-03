@@ -131,3 +131,4 @@ base_packages:
     - neovim 
     - tlp
     - stow
+    - moreutils
