@@ -17,3 +17,13 @@
 #  become: true
 #  become_user: "{{ user.name }}"
 #  
+
+- name: Clone local script
+  ansible.builtin.git:
+    repo: https://github.com/janze1992/scripts.git
+    dest: "/home/{{ user.name }}/.local/bin"
+    accept_hostkey: true
+    update: true
+    force: true
+  become: true
+  become_user: "{{ user.name }}"
