@@ -2,3 +2,6 @@
 
 - name: install e-mail client
   ansible.builtin.import_tasks: email.yml
+
+- name: install explorer
+  ansible.builtin.import_tasks: explorer.yml 
