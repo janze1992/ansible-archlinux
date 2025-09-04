@@ -7,8 +7,6 @@
       - pulseaudio
       - pulseaudio-alsa
       - pavucontrol
-      - pipewire-pulse
-      - wireplumber
       - pulsemixer
     state: present
   register: task_result

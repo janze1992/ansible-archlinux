@@ -5,8 +5,8 @@
     name:
       - ranger
       - lf
-      - ueberzugpp
-      - PCManFM
+      - ueberzug
+      - pcmanfm
     state: present
   register: task_result
   until: task_result is success
