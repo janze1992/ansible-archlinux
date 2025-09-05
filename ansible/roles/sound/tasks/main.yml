@@ -4,8 +4,14 @@
   community.general.pacman:
     name:
       - alsa-utils
+<<<<<<< HEAD
       - pipewire-pulse
       - wireplumber
+=======
+      - pulseaudio
+      - pulseaudio-alsa
+      - pavucontrol
+>>>>>>> 764d7fbcdd3296280b2d7b772c37fb72a0e75547
       - pulsemixer
     state: present
   register: task_result
