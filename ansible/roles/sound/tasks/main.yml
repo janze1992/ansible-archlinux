@@ -4,9 +4,6 @@
   community.general.pacman:
     name:
       - alsa-utils
-      - pulseaudio
-      - pulseaudio-alsa
-      - pavucontrol
       - pipewire-pulse
       - wireplumber
       - pulsemixer
