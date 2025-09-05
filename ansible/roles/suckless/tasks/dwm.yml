@@ -17,6 +17,7 @@
       - slock
       - xdotool
       - python-qdarkstyle
+      - xcompmgr
     state: present
   register: task_result
   until: task_result is success
