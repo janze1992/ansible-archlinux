@@ -1,8 +1,8 @@
 ---
 
 initrd_mods: "btrfs"
-initrd_bin: "/usr/bins/btrfs"
+initrd_bin: "/usr/bin/btrfs"
 initrd_files: ""
 #initrd_hooks: "base udev autodetect keyboard keymap modconf block encrypt consolefont filesystems fsck shutdown"
-initrd_hooks: "base udev autodetect microcode modconf kms keyboard keymap consolefront block encrypt filesystems fsck"
+initrd_hooks: "base udev autodetect microcode modconf kms keyboard keymap  block encrypt filesystems fsck"
 initrd_compression: "" 
