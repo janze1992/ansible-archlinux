@@ -7,11 +7,11 @@
 
   roles:
     - { role: network, tags: ['network'] }
-    - { role: kernel, tags: ['kernel'] }
+  #  - { role: kernel, tags: ['kernel'] }
     - { role: base, tags: ['base'] }
     - { role: shell, tags: ['shell'] }
     - { role: firewall, tags: ['firewall'] }
-    - { role: grub, tags: ['grub'] }
+  #  - { role: grub, tags: ['grub'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: terminal, tags: ['terminal'] }
     - { role: i3, tags: ['i3'], when: "windowmanager == 'i3'"}
