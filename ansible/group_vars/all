@@ -68,7 +68,7 @@ ssh:
 ##
 dotfiles:
     installation: true
-    url: https://github.com/janze1992/dotfiles.git
+    url: git@github.com:janze1992/dotfiles.git
     destination: "/home/{{ user.name }}/dotfiles"
 
 
@@ -78,8 +78,8 @@ dotfiles:
 # 
 #
 st:
-    url: https://github.com/janze1992/st.git
-    destination: "/home/{{ user.name }}/suckless/st"
+    url: git@github.com:janze1992/st.git
+    destination: "/home/{{ user.name }}/.local/src/st"
 
 ##
 # dwm configuration
@@ -87,8 +87,8 @@ st:
 # 
 #
 dwm:
-    url: https://github.com/janze1992/dwm.git
-    destination: "/home/{{ user.name }}/suckless/dwm"
+    url: git@github.com/:janze1992/dwm.git
+    destination: "/home/{{ user.name }}/.local/src/dwm"
     
 ##
 # dwmblocks configuration
@@ -96,8 +96,8 @@ dwm:
 # 
 #
 dwmblocks:
-    url: https://github.com/janze1992/dwmblocks.git
-    destination: "/home/{{ user.name }}/suckless/dwmblocks"
+    url: git@github.com:janze1992/dwmblocks.git
+    destination: "/home/{{ user.name }}/.local/src/dwmblocks"
     
 ##
 # demu configuration
@@ -105,8 +105,8 @@ dwmblocks:
 # 
 #
 dmenu:
-    url: https://github.com/janze1992/dmenu.git
-    destination: "/home/{{ user.name }}/suckless/dmenu"
+    url: git@github.com:janze1992/dmenu.git
+    destination: "/home/{{ user.name }}/.local/src/dmenu"
 
 ##
 # Base package configuration
