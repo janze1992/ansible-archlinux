@@ -1,14 +1,24 @@
 ---
 
-- name: Install linux-hardened and hardened headers
+- name: Install linux and headers
   community.general.pacman:
     name:
       - linux
       - linux-headers
     state: present
   notify:
-    - update grub
+#    - update grub
 #    - update syslinux
+
+- name: Install required packages for UKI Secure Boot
+  community.general.pacman:
+    name:
+      - mkinitcpio
+      - sbctl
+      - systemd-ukify
+    state: present 
+  register: task_result
+  until: task_result is success      
 
 - name: Push mkinitcpio configuration and regenerate initramfs
   ansible.builtin.template:
@@ -16,3 +26,21 @@
     dest: /etc/mkinitcpio.conf
   notify:
     - regenerate initramfs
+
+#- name: Push root.conf cmdline  
+#  ansible.builtin.template:
+#    src: root.conf.j2
+#    dest: /etc/cmdline.d/root.conf
+
+- name: push present file
+  ansible.builtin.template:
+    src: linux.present.j2
+    dest: /etc/mkinitcpio.d/linux.preset
+  notify:
+    - regenerate initramfs
+
+- name: push pacman hook for secure boot
+  ansible.builtin.template:
+    src: 95-systemd-boot.hook.j2
+    dest: /etc/pacman.d/hooks/95-systemd-boot.hook
+

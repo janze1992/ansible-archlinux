@@ -5,7 +5,7 @@
     name:
       - ranger
       - lf
-      - ueberzug
+      - ueberzugpp
       - pcmanfm
     state: present
   register: task_result
