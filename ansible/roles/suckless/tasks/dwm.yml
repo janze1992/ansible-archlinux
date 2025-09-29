@@ -18,6 +18,7 @@
       - xdotool
       - python-qdarkstyle
       - xcompmgr
+      - xscreen
     state: present
   register: task_result
   until: task_result is success
