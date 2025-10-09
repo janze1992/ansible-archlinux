@@ -1,5 +1,0 @@
----
-
-- name: update syslinux
-  ansible.builtin.command: "syslinux --update"
-  when: bootloader == "syslinux"

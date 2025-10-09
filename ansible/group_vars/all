@@ -24,7 +24,7 @@ system:
     locale: en_US.UTF-8
     timezone: Europe/Berlin
     processor: intel
-    graphics_card: intel
+    graphics_card: amd
     macspoof: disable
 
 ##
@@ -43,14 +43,14 @@ windowmanager: suckless
 # * use syslinux for BIOS/MBR setups
 # * use grub for UEFI/GPT setups
 ##
-bootloader: grub
+bootloader: systemd-boot
 
 ##
 # Cryptdevice config
 # ==================
 # The device name of your luks device
 ##
-cryptdevice: /dev/sda2
+cryptdevice: /dev/nvme0n1p2
 
 ##
 # Connectivity configuration
@@ -87,7 +87,7 @@ st:
 # 
 #
 dwm:
-    url: git@github.com/:janze1992/dwm.git
+    url: git@github.com:janze1992/dwm.git
     destination: "/home/{{ user.name }}/.local/src/dwm"
     
 ##
@@ -96,7 +96,7 @@ dwm:
 # 
 #
 dwmblocks:
-    url: git@github.com:janze1992/dwmblocks.git
+    url: git@github.com:janze1992/dwmblocks-async.git
     destination: "/home/{{ user.name }}/.local/src/dwmblocks"
     
 ##
@@ -119,7 +119,6 @@ base_packages:
     - openssh
     - rkhunter
     - pacman-contrib
-    - fish
     - htop
     - curl
     - git
