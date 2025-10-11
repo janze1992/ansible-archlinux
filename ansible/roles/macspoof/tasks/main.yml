@@ -12,4 +12,7 @@
   ansible.builtin.service: name=macspoof@{{ item }}.service enabled=true
   with_items:
     - "{{ ansible_interfaces }}"
-  when: item != 'lo'
+  when: 
+    - item != 'lo'
+    - item != 'tailscale0'
+    - item != 'virbr0'

@@ -25,7 +25,7 @@ system:
     timezone: Europe/Berlin
     processor: intel
     graphics_card: amd
-    macspoof: disable
+    macspoof: enabled
 
 ##
 # Windowmanager configuration
