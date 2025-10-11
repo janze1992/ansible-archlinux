@@ -11,7 +11,7 @@
     - { role: base, tags: ['base'] }
     - { role: shell, tags: ['shell'] }
     - { role: firewall, tags: ['firewall'] }
-  #  - { role: grub, tags: ['grub'] }
+    - { role: hardening, tags: ['hardening'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: terminal, tags: ['terminal'] }
     - { role: i3, tags: ['i3'], when: "windowmanager == 'i3'"}
