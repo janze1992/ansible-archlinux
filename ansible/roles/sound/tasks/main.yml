@@ -1,12 +1,14 @@
 ---
 
-- name: Install alsa-utils and pulseaudio tools
+- name: Install alsa-utils and pipewire tools
   community.general.pacman:
     name:
       - alsa-utils
       - alsa-firmware
-      - pulseaudio
-      - pulseaudio-alsa
+      - pipewire
+      - pipewire-pulse
+      - pipewire-alsa
+      - wireplumber
       - pamixer
       - pavucontrol
     state: present
