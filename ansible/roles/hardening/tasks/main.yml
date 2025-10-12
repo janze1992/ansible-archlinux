@@ -18,6 +18,29 @@
     - kptr_restrict.conf   
     - unprivileged_users_clone.conf
     
+- name: Install Apparmor
+  community.general.pacman:
+    name:
+      - apparmor
+      - audit
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: enable apparmor service
+  ansible.builtin.service:
+    name: apparmor
+    state: started
+    enabled: true
+
+- name: enable audit servce
+  ansible.builtin.service:
+    name: auditd
+    state: started
+    enabled: true
+
 - name: hidepid mount /proc in fstab
   ansible.builtin.lineinfile:
     path: /etc/fstab
@@ -27,4 +50,21 @@
     - "proc /proc proc nosuid,nodev,noexec,hidepid=2,gid=proc 0 "
     - "# By default this is accessible to all users. This can allows an attacker to spy a lot on other processes. To allow users to only see their own processes."
     
+- name: Create a directory /etc/systemd/system/systemd-logind.service.d
+  ansible.builtin.file:
+    path: /etc/systemd/system/systemd-logind.service.d
+    state: directory
 
+- name: Copy hidepid.conf to systemd-logind service
+  ansible.builtin.copy:
+    src: hidepid.conf
+    dest: /etc/systemd/system/systemd-logind.service.d/hidepid.conf
+    owner: root
+    group: root
+
+- name: disable Netfilter connection tracking helper
+  ansible.builtin.copy:
+    src: no-conntrack-helper.conf
+    dest: /etc/modprobe.d/no-conntrack-helper.conf 
+    owner: root
+    group: root

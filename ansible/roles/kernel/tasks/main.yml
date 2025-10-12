@@ -24,15 +24,20 @@
   notify:
     - regenerate initramfs
     
-    
 - name: Determine cryptdevice uuid
-  ansible.builtin.command: "blkid -s UUID -o value {{ cryptdevice }}"
+  ansible.builtin.command: "blkid -s PARTUUID -o value {{ cryptdevice }}"
   register: blkid_output
 
 - name: Set uuid fact
   ansible.builtin.set_fact:
     crypt_uuid: "{{ blkid_output.stdout}}"
 
+- name: Push cmdline config 
+  ansible.builtin.template:
+    src: cmdline.j2
+    dest: /etc/kernel/cmdline
+  notify:
+    - regenerate initramfs
 
 - name: push pacman hook for secure boot
   ansible.builtin.template:
