@@ -6,3 +6,19 @@ initrd_files: ""
 #initrd_hooks: "base udev autodetect keyboard keymap modconf block encrypt consolefont filesystems fsck shutdown"
 initrd_hooks: "base udev autodetect microcode modconf kms keyboard keymap  block encrypt filesystems fsck"
 initrd_compression: "" 
+
+
+kline:
+  root: root=/dev/mapper/root
+  resume:   
+  #  resume: resume=/dev/mapper/cryptroot
+  default: loglevel=3 quiet acpi_osi=Linux splash
+
+kernel_line_default: "{{ kline.default }}"
+kernel_line: "cryptdevice=UUID={{crypt_uuid}}:root zswap.enables=0 rootfstype=btrfs"
+
+
+cryptdevice=LABEL=rootcrypt:rootlvm root=LABEL=root rw quiet lsm=landlock,lockdown,yama,apparmor,bpf
+
+
+slab_nomerge slub_debug=FZ init_on_alloc=1 init_on_free=1 mce=0 pti=on mds=full,nosmt module.sig_enforce=1 oops=panic

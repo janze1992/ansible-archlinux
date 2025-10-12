@@ -17,4 +17,14 @@
     - tcp_sack.conf
     - kptr_restrict.conf   
     - unprivileged_users_clone.conf
+    
+- name: hidepid mount /proc in fstab
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    state: present
+    line: "{{ item }}"
+  loop:
+    - "proc /proc proc nosuid,nodev,noexec,hidepid=2,gid=proc 0 "
+    - "# By default this is accessible to all users. This can allows an attacker to spy a lot on other processes. To allow users to only see their own processes."
+    
 

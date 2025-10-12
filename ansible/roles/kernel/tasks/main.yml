@@ -23,6 +23,15 @@
     dest: /etc/mkinitcpio.conf
   notify:
     - regenerate initramfs
+    
+    
+- name: Determine cryptdevice uuid
+  ansible.builtin.command: "blkid -s UUID -o value {{ cryptdevice }}"
+  register: blkid_output
+
+- name: Set uuid fact
+  ansible.builtin.set_fact:
+    crypt_uuid: "{{ blkid_output.stdout}}"
 
 
 - name: push pacman hook for secure boot
