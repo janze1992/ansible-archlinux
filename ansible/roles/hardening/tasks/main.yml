@@ -17,6 +17,8 @@
     - tcp_sack.conf
     - kptr_restrict.conf   
     - unprivileged_users_clone.conf
+    - coredump.conf
+    - suid_dumpable.conf
     
 - name: Install Apparmor
   community.general.pacman:
@@ -68,3 +70,12 @@
     dest: /etc/modprobe.d/no-conntrack-helper.conf 
     owner: root
     group: root
+    
+- name: disable dumps ulimit
+  ansible.builtin.lineinfile:
+    path: /etc/security/limits.conf
+    state: present
+    line: "{{ item }}"
+  loop:
+    - "* hard core 0"
+    - "# Core dumps contain the recorded state of the working memory of a program at a specific time, usually when that program has crashed. These can contain very important information such as passwords and encryption keys. [45] You should disable these to prevent someone from accessing that information."
