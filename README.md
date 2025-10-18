@@ -5,14 +5,16 @@ dotfiles are kept in an independent repository. They are managed using by a simp
 
 ## Main features of this installation
 * Full disk encryption
-* LVM on LUKS partitioning scheme
-* A desktop environment consisting of i3gaps, i3status-rust, rofi and picom
+* BTRFS on LUKS partitioning scheme
+* A desktop environment consisting of i3gaps, i3status-rust, rofi and picom OR with suckless tool, like dwm,st,dmenu,dwmblocks
 * Simple configuration using `group_vars/all`
 
 ## Additional security features
 * Minimalism, no bullshit installed
 * Restrictive and comprehensive iptables rules
 * Automatic mac address spoofer for wireless network devices
+* Hardening COnfiguration -> e.g Uneccesary kernel moduls, syctl-config
+
 
 ## Install base system
 You can either install your own minimal system or you follow the instructions
