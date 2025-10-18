@@ -110,24 +110,23 @@
     owner: root
     group: root
 
-- name: Add strong password settings to PAM
-  ansible.builtin.lineinfile:
-    path: /etc/pam.d/passwd
-    state: present
-    line: "{{ item }}"
-  loop:
-    - "password required pam_pwquality.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1"
-    - "password required pam_unix.so use_authtok sha512 shadow"
+#- name: Add strong password settings to PAM
+#  ansible.builtin.lineinfile:
+#    path: /etc/pam.d/passwd
+#    state: present
+#    line: "{{ item }}"
+#  loop:
+#    - "password required pam_pwquality.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1"
+#    - "password required pam_unix.so use_authtok sha512 shadow"
 
-- name: Increase loging delay and lockout behavior by failed login
-  ansible.builtin.lineinfile:
-    path: /etc/pam.d/system-login
-    state: present
-    line: "{{ item }}"
-  loop:
-    - "auth optional pam_faildelay.so delay=4000000"
-    - "auth required pam_tally2.so deny=3 unlock_time=600 onerr=succeed file=/var/log/tallylog"
-
+#- name: Increase loging delay and lockout behavior by failed login
+#  ansible.builtin.lineinfile:
+#    path: /etc/pam.d/system-login
+#    state: present
+#    line: "{{ item }}"
+#  loop:
+#    - "auth optional pam_faildelay.so delay=4000000"
+#    - "auth required pam_tally2.so deny=3 unlock_time=600 onerr=succeed file=/var/log/tallylog"
 
 - name: Copy modprobe configs
   ansible.builtin.copy:
@@ -138,4 +137,3 @@
   with_items:
     - uncommon-network-protocols.conf 
     - uncommon-filesystems.conf
-

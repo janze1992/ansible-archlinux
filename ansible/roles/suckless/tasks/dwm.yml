@@ -8,7 +8,7 @@
       - xorg-xinit
       - xorg-xset
       - xorg-xprop
-      - xorg-xbacklight
+      - acpilight 
       - arandr
       - libnotify
       - dunst
@@ -16,9 +16,7 @@
       - xclip
       - slock
       - xdotool
-      - python-qdarkstyle
       - xcompmgr
-      - xscreen
     state: present
   register: task_result
   until: task_result is success

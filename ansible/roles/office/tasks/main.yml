@@ -15,3 +15,14 @@
   until: task_result is success
   retries: 10
   delay: 2
+
+- name: Install LibreOffice
+  community.general.pacman:
+    name:
+      - libreoffice-fresh
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
