@@ -58,7 +58,7 @@ cryptdevice: /dev/nvme0n1p2
 ##
 ssh:
     port: 22
-    enable_sshd: true
+    enable_sshd: false
 
 ##
 # Dotfile configuration

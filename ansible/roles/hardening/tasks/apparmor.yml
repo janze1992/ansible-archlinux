@@ -1,0 +1,34 @@
+---
+
+- name: Install Apparmor
+  community.general.pacman:
+    name:
+      - apparmor
+      - audit
+      - phyton-notify2
+      - tk
+      - dex
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+
+- name: enable apparmor service
+  ansible.builtin.service:
+    name: apparmor
+    state: started
+    enabled: true
+
+- name: enable audit servce
+  ansible.builtin.service:
+    name: auditd
+    state: started
+    enabled: true
+
+-name: Enable Audit Notifications
+  ansible.builtin.copy:
+    src: audit-notify.desktop
+    dest: /home/{{ username }}/.config/autostart/audit-notify.desktop
+    owner: "{{ username }}"
+    group: "{{ username }}"
