@@ -20,15 +20,25 @@
     state: started
     enabled: true
 
-- name: enable audit servce
+- name: enable audit service
   ansible.builtin.service:
     name: auditd
     state: started
     enabled: true
 
--name: Enable Audit Notifications
+- name: Enable Audit Notifications
   ansible.builtin.copy:
     src: audit-notify.desktop
     dest: /home/{{ username }}/.config/autostart/audit-notify.desktop
     owner: "{{ username }}"
     group: "{{ username }}"
+
+
+- name: activate cache modus apparmor
+  ansible.builtin.lineinfile:
+    path: /etc/apparmor/parser.conf
+    state: present
+    line: "{{ item }}"
+  loop:
+    - "## Turn creating/updating of the cache on by default"
+    - "write-cache"
