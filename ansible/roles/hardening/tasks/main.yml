@@ -1,139 +1,25 @@
 ---
 
-- name: Copy sysctl configs
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: /etc/sysctl.d/
-    owner: root
-    group: root
-  with_items:
-    - mmap_aslr.conf
-    - ptrace_scope.conf
-    - dmesg_restrict.conf  
-    - sysrq.conf
-    - harden_bpf.conf     
-    - tcp_hardening.conf
-    - kexec.conf
-    - tcp_sack.conf
-    - kptr_restrict.conf   
-    - unprivileged_users_clone.conf
-    - coredump.conf
-    - suid_dumpable.conf
-    - ipv6_privacy.conf
+- name: import sysctl tasks
+  ansible.builtin.import_tasks: sysctl.yml
     
-- name: Install Apparmor
-  community.general.pacman:
-    name:
-      - apparmor
-      - audit
-    state: present
-  register: task_result
-  until: task_result is success
-  retries: 10
-  delay: 2
+- name: import apparmor tasks
+  ansible.builtin.import_tasks: apparmor.yml
 
-- name: enable apparmor service
-  ansible.builtin.service:
-    name: apparmor
-    state: started
-    enabled: true
+- name: import hideproc tasks
+  ansible.builtin.import_tasks: hideproc.yml
 
-- name: enable audit servce
-  ansible.builtin.service:
-    name: auditd
-    state: started
-    enabled: true
+- name: import dumps tasks
+  ansible.builtin.import_tasks: dump.yml
 
-- name: hidepid mount /proc in fstab
-  ansible.builtin.lineinfile:
-    path: /etc/fstab
-    state: present
-    line: "{{ item }}"
-  loop:
-    - "proc /proc proc nosuid,nodev,noexec,hidepid=2,gid=proc 0 "
-    - "# By default this is accessible to all users. This can allows an attacker to spy a lot on other processes. To allow users to only see their own processes."
-    
-- name: Create directory /etc/systemd/system/systemd-logind.service.d
-  ansible.builtin.file:
-    path: /etc/systemd/system/systemd-logind.service.d
-    state: directory
+- name: import ipv6 tasks
+  ansible.builtin.import_tasks: ipv6.yml
 
-- name: Copy hidepid.conf to systemd-logind service
-  ansible.builtin.copy:
-    src: hidepid.conf
-    dest: /etc/systemd/system/systemd-logind.service.d/hidepid.conf
-    owner: root
-    group: root
+- name: import modprobe tasks
+  ansible.builtin.import_tasks: modprobe.yml
 
-- name: disable Netfilter connection tracking helper
-  ansible.builtin.copy:
-    src: no-conntrack-helper.conf
-    dest: /etc/modprobe.d/no-conntrack-helper.conf 
-    owner: root
-    group: root
-    
-- name: disable dumps ulimit
-  ansible.builtin.lineinfile:
-    path: /etc/security/limits.conf
-    state: present
-    line: "{{ item }}"
-  loop:
-    - "* hard core 0"
-    - "# Core dumps contain the recorded state of the working memory of a program at a specific time, usually when that program has crashed. These can contain very important information such as passwords and encryption keys. [45] You should disable these to prevent someone from accessing that information."
+- name: import passwd tasks
+  ansible.builtin.import_tasks: passwd.yml
 
-- name: Create directory/etc/systemd/coredump.conf.d
-  ansible.builtin.file:
-    path: /etc/systemd/coredump.conf.d
-    state: directory
+  
 
-- name: Copy custom.conf to /etc/systemd/coredump.conf.d
-  ansible.builtin.copy:
-    src: custom.conf
-    dest:  /etc/systemd/coredump.conf.d/custom.conf
-    owner: root
-    group: root
- 
-- name: Add IPv6 privacy settings for networkmanager
-  ansible.builtin.lineinfile:
-    path: /etc/NetworkManager/NetworkManager.conf
-    state: present
-    line: "{{ item }}"
-  loop:
-    - "[connection]"
-    - "ipv6.ip6-privacy=2"
-    - "# to enable privacy extensions for NetworkManager"
-
-- name: Copy ipv6.conf to /etc/systemd/network/
-  ansible.builtin.copy:
-    src: ipv6.conf
-    dest:  /etc/systemd/network/ipv6.conf
-    owner: root
-    group: root
-
-#- name: Add strong password settings to PAM
-#  ansible.builtin.lineinfile:
-#    path: /etc/pam.d/passwd
-#    state: present
-#    line: "{{ item }}"
-#  loop:
-#    - "password required pam_pwquality.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1"
-#    - "password required pam_unix.so use_authtok sha512 shadow"
-
-#- name: Increase loging delay and lockout behavior by failed login
-#  ansible.builtin.lineinfile:
-#    path: /etc/pam.d/system-login
-#    state: present
-#    line: "{{ item }}"
-#  loop:
-#    - "auth optional pam_faildelay.so delay=4000000"
-#    - "auth required pam_tally2.so deny=3 unlock_time=600 onerr=succeed file=/var/log/tallylog"
-
-- name: Copy modprobe configs
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: /etc/modprobe.d/
-    owner: root
-    group: root
-  with_items:
-    - uncommon-network-protocols.conf 
-    - uncommon-filesystems.conf

@@ -1,0 +1,20 @@
+---
+
+- name: disable Netfilter connection tracking helper
+  ansible.builtin.copy:
+    src: no-conntrack-helper.conf
+    dest: /etc/modprobe.d/no-conntrack-helper.conf 
+    owner: root
+    group: root
+
+
+
+- name: Copy modprobe configs
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/modprobe.d/
+    owner: root
+    group: root
+  with_items:
+    - uncommon-network-protocols.conf 
+    - uncommon-filesystems.conf

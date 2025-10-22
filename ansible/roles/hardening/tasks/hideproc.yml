@@ -1,0 +1,22 @@
+---
+
+- name: hidepid mount /proc in fstab
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    state: present
+    line: "{{ item }}"
+  loop:
+    - "proc /proc proc nosuid,nodev,noexec,hidepid=2,gid=proc 0 "
+    - "# By default this is accessible to all users. This can allows an attacker to spy a lot on other processes. To allow users to only see their own processes."
+    
+- name: Create directory /etc/systemd/system/systemd-logind.service.d
+  ansible.builtin.file:
+    path: /etc/systemd/system/systemd-logind.service.d
+    state: directory
+
+- name: Copy hidepid.conf to systemd-logind service
+  ansible.builtin.copy:
+    src: hidepid.conf
+    dest: /etc/systemd/system/systemd-logind.service.d/hidepid.conf
+    owner: root
+    group: root
