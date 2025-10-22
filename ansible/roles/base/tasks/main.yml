@@ -14,3 +14,6 @@
 
 - name: import fonts tasks
   ansible.builtin.import_tasks: fonts.yml
+
+- name: import tlp tasks
+  ansible.builtin.import_tasks: tlp.yml

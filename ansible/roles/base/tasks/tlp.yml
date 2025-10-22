@@ -1,0 +1,36 @@
+---
+
+- name: Install tlp packages 
+  community.general.pacman:
+    name:
+      - tlp
+      - tlp-rdw
+    state: present
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2
+  notify:
+    - rkhunter propupdate
+
+
+- name: Enable tlp service
+  ansible.builtin.service: name=tlp state=started enabled=true
+
+- name: Ensure that systemd-rfkill.service is masked
+  ansible.builtin.systemd_service:
+    name: systemd-rfkill.service
+    masked: yes
+
+- name: Ensure that systemd-rfkill.socket is masked
+  ansible.builtin.systemd_service:
+    name: systemd-rfkill.socket
+    masked: yes
+
+
+- name: Configure TLP settings
+  ansible.builtin.copy:
+    src: 01-tlp.conf
+    dest: /etc/tlp.d/01-tlp.conf
+    owner: root
+    group: root
