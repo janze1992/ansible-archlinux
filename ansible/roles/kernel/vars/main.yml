@@ -10,5 +10,5 @@ initrd_compression: ""
 
 kline:
 kernel_line: "cryptdevice=PARTUUID={{crypt_uuid}}:root root=/dev/mapper/root"
-kernel_options: "zswap.enabled=0 rootflags=subvol=@ rw rootfstype=btrfs intel_iommu=on"
+kernel_options: "zswap.enabled=0 rootflags=subvol=@ rw rootfstype=btrfs intel_iommu=on immou=pt"
 kernel_sec_options: "lsm=landlock,lockdown,yama,apparmor,bpf"
