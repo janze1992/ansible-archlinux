@@ -74,3 +74,11 @@
 
 - name: Enable paccache timer
   ansible.builtin.service: name=paccache.timer state=started enabled=true
+
+
+- name: Configure logind settings
+  ansible.builtin.copy:
+    src: 00-logind.conf
+    dest: /etc/systemd/logind.conf.d/00-logind.conf
+    owner: root
+    group: root

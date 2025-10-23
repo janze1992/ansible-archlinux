@@ -14,10 +14,3 @@
   community.general.pacman: name=qutebrowser state=present
   tags:
     - qutebrowser
-
-- name: Install chromium
-  community.general.pacman: name=chromium state=present
-  tags:
-    - chromium
-
-

@@ -4,11 +4,12 @@ initrd_mods: "btrfs"
 initrd_bin: "/usr/bin/btrfs"
 initrd_files: ""
 #initrd_hooks: "base udev autodetect keyboard keymap modconf block encrypt consolefont filesystems fsck shutdown"
-initrd_hooks: "base udev autodetect microcode modconf kms keyboard keymap  block encrypt filesystems fsck"
+initrd_hooks: "base udev autodetect microcode modconf kms keyboard keymap  block encrypt filesystems fsck resume"
 initrd_compression: "" 
 
 
 kline:
 kernel_line: "cryptdevice=PARTUUID={{crypt_uuid}}:root root=/dev/mapper/root"
 kernel_options: "zswap.enabled=0 rootflags=subvol=@ rw rootfstype=btrfs intel_iommu=on immou=pt"
+kernel_resume: "resume=UUID=e4b104f1-e221-42a2-81b8-47f5b2358902 resume_offset=54027520"
 kernel_sec_options: "lsm=landlock,lockdown,yama,apparmor,bpf"
